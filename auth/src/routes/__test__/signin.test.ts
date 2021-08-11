@@ -2,7 +2,7 @@ import request from "supertest";
 import { app } from "../../app";
 
 it("fails when an email that doesn't exist is supplied", async () => {
-	return request(app)
+	await request(app)
 		.post("/api/users/signin")
 		.send({
 			email: "test@test.com",
@@ -20,7 +20,7 @@ it("fails when an incorrect password is supplied", async () => {
 		})
 		.expect(201);
 
-	request(app)
+	await request(app)
 		.post("/api/users/signin")
 		.send({
 			email: "test@test.com",
